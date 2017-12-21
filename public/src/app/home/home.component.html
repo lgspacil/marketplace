@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+
+<div class="boxcontainer" *ngFor="let card of card_info">
+  <mat-card class="example-card box">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{card.item_name}}</mat-card-title>
+      <mat-card-subtitle>Users Name</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{card.large_img}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        Condition: {{card.condition}}
+      </p>
+      <p>
+        {{card.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <i class="material-icons" (click)="likeButtonClicked(card)">thumb_up</i><span id="likes">{{card.likes}}</span>
+
+      <div class="stars" *ngFor="let s of stars">
+          <i id='{{s}}' class="material-icons">star_rate</i>
+      </div>
+
+    </mat-card-actions>
+  </mat-card>
+</div>
