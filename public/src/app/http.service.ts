@@ -21,4 +21,11 @@ export class HttpService {
     return this._http.post('/add_like', card).map(data => data.json()).toPromise();
   }
 
+  deletethis(card) {
+    return this._http.post('/delete_this', card).map(data => data.json()).toPromise();
+  }
+
+  findOne(item_name) {
+    return this._http.post('/search_one', item_name).map(data => data.json()).toPromise();
+  }
 }

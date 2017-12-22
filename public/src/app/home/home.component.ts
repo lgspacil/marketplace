@@ -11,6 +11,11 @@ export class HomeComponent implements OnInit {
 
   card_info = null;
   stars = [1, 2, 3, 4, 5];
+  show_x = false;
+  item_name = {
+    letters: ''
+  };
+
 
   constructor(private _cookieService: CookieService, private _httpService: HttpService) { }
 
@@ -19,8 +24,26 @@ export class HomeComponent implements OnInit {
     this._cookieService.put('name', 'lucas');
   }
 
-  clickedStar(star) {
-    console.log('the star was clicked', star);
+  search() {
+    if (this.item_name.letters === '') {
+      return this.loadAllCards();
+    }
+    this._httpService.findOne(this.item_name)
+    .then((data) => {
+      console.log('the data is: ', data);
+      this.card_info = data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+  toggleDeleteItems() {
+    if (this.show_x === false) {
+      this.show_x = true;
+    } else {
+      this.show_x = false;
+    }
   }
 
   mouseOver(s) {
@@ -34,6 +57,20 @@ export class HomeComponent implements OnInit {
 
       document.getElementById(str).style.color = 'yellow';
     }
+  }
+
+  deletethis(card) {
+    this._httpService.deletethis(card)
+
+    .then((data) => {
+      console.log(data);
+      if (data === true) {
+        this.loadAllCards();
+      }
+    })
+    .catch((err) => {
+      console.log('there was an error deleting the item');
+    });
   }
 
   likeButtonClicked(card) {

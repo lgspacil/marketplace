@@ -3,12 +3,21 @@
 }
 
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url('http://trumpocracy.com/wp-content/uploads/2017/03/For-Sale.jpg');
   background-size: cover;
 }
 
+.title{
+  color: black;
+}
+
+
 .color{
   color: rgb(199, 199, 31);
+}
+
+.trash{
+  color: black;
 }
 
 .stars{

@@ -23,7 +23,7 @@ import { AddItemsComponent } from './add-items/add-items.component';
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    AddItemsComponent
+    AddItemsComponent,
   ],
   imports: [
     FormsModule,

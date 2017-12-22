@@ -1,13 +1,40 @@
-<app-navbar></app-navbar>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Amazon</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/']">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" role="button" [routerLink]="['/add']">Add Items</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" name="letters" [(ngModel)]="item_name.letters">
+      <button class="btn btn-secondary my-2 my-sm-0" (click)="search()"> Search</button>
+    </form>
+  </div>
+</nav>
+
 
 <div class="boxcontainer" *ngFor="let card of card_info">
   <mat-card class="example-card box">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{card.item_name}}</mat-card-title>
-      <mat-card-subtitle>Users Name</mat-card-subtitle>
+      <mat-card-title class="title">{{card.item_name}} {{card.price}} USD</mat-card-title>
+      <mat-card-subtitle class="seller">Seller: {{card.sellers_name}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="{{card.large_img}}" alt="Photo of a Shiba Inu">
+    <img mat-card-image src="{{card.large_img}}" alt="Photo Not Found">
     <mat-card-content>
       <p>
         Condition: {{card.condition}}
@@ -17,11 +44,14 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <i class="material-icons" (click)="likeButtonClicked(card)">thumb_up</i><span id="likes">{{card.likes}}</span>
+      <i class="material-icons" (click)="likeButtonClicked(card)">thumb_up</i>
+      <span id="likes">{{card.likes}}</span>
 
       <div class="stars" *ngFor="let s of stars">
-          <i id='{{s}}' class="material-icons">star_rate</i>
+        <i id='{{s}}' role="button" class="material-icons">star_rate</i>
       </div>
+
+      <button class="btn btn-warning" (click)="deletethis(card)">Delete Item</button>
 
     </mat-card-actions>
   </mat-card>

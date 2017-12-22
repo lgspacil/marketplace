@@ -6,7 +6,9 @@ var ItemSchema = new mongoose.Schema({
     condition: {type: String},
     description: {type: String},
     large_img: {type: String},
-    likes: {type: Number}
+    likes: {type: Number},
+    price: {type: Number},
+    sellers_name: {type: String}
 })
 
 var Item = mongoose.model('Item', ItemSchema);

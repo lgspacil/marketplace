@@ -35,6 +35,21 @@ module.exports = {
             if(err){console.log("there was an error when updating")}
             else{res.json(result);}
         })
+    },
+
+    delete_this: function(req, res) {
+        Item.remove({_id: req.body._id}, function(err, result){
+            if(err){console.log("there was an error removing item")}
+            else{res.json(true)}
+        })
+    },
+
+    search_one: function(req, res) {
+        console.log("^^^^^^^^^^^", req.body);
+        Item.find({item_name: req.body.letters}, function(err, result){
+            if(err){console.log("there was an error searhcin for things")}
+            else{res.json(result);}
+        })
     }
 }
 
